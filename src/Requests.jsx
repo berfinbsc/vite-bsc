@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom' 
+import { useParams ,Navigate, useNavigate} from 'react-router-dom' 
 import axios from 'axios';
 
 const Requests = () => {
+  const navigate = useNavigate();
 
   const {link}= useParams()
 const [pagebsc,setPage]= useState("");
@@ -21,15 +22,17 @@ axios.get(`https://zetacoder.rocks/darvinapi/darvinberfin/${link}`)
 
 },[link])
 
+useEffect(() => {
+  if (link && pagebsc) {
+    const url = new URL(pagebsc);
+    navigate(url, { replace: true, target: "_blank" });
+  }
+}, [link,pagebsc]);
 
 
   return (
     <div>
-      <p>
-{pagebsc}
-
-
-      </p>
+     <a href={pagebsc}>{pagebsc}</a>
 
     </div>
   )
