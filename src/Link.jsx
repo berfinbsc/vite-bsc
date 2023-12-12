@@ -1,11 +1,19 @@
 import React, {useState} from 'react'
 import axios from 'axios';
+import { useParams} from 'react-router-dom' 
+
 const Link = () => {
 
 
-const [longlink,setLongLink]=useState('');
-const [shortlink,setShortLink]=useState('');
-const [message , setMessage] = useState(''); // default false 
+
+const [longlink,setLongLink]=useState("");
+const [shortlink,setShortLink]=useState("");
+const [message , setMessage] = useState('');
+const [kisalink , setKisalink] = useState(""); 
+
+
+
+// default false 
 const handlePostRequest=()=>{
   const data={
     longlink:longlink, 
@@ -16,7 +24,8 @@ const handlePostRequest=()=>{
   .then(response=>{
     console.log(response.data);  
     setMessage(response.data.message) 
-
+    setKisalink(shortlink)
+    
   })
      
   .catch(error =>{
@@ -55,7 +64,8 @@ const handlePostRequest=()=>{
 
  <p>{message}</p> 
 
-
+ <p> {kisalink}
+</p>
 </div>
 
        
