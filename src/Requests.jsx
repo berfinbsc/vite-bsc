@@ -34,7 +34,7 @@ useEffect(() => {
     <div>
      <a href={pagebsc}>{pagebsc}</a>
 
-    </div>
+    </div> 
   )
 
   }
