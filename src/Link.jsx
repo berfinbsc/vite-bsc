@@ -4,7 +4,7 @@ import { useParams} from 'react-router-dom'
 
 const Link = () => {
 
-
+const url="localhost:5174/";
 
 const [longlink,setLongLink]=useState("");
 const [shortlink,setShortLink]=useState("");
@@ -17,14 +17,14 @@ const [kisalink , setKisalink] = useState("");
 const handlePostRequest=()=>{
   const data={
     longlink:longlink, 
-    darvinlink:shortlink 
+    darvinlink:shortlink
   }
 
   axios.post('https://zetacoder.rocks/darvinapi/darvinberfin/create', data) 
   .then(response=>{
     console.log(response.data);  
     setMessage(response.data.message) 
-    setKisalink(shortlink)
+    setKisalink(url+shortlink);
     
   })
      
@@ -64,8 +64,9 @@ const handlePostRequest=()=>{
 
  <p>{message}</p> 
 
- <p> {kisalink}
-</p>
+
+
+<a href={kisalink}>{kisalink}</a>
 </div>
 
        
