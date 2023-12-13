@@ -14,7 +14,18 @@ axios.get(`https://zetacoder.rocks/darvinapi/darvinberfin/${link}`)
   return response.data.longlink;
 })
 .then(url=>{
-  window.location.replace(url);
+
+  if(url){
+    if (!url.startsWith('http://') && !url.startsWith('https://')) {
+        url = 'http://' + url;
+    }
+    window.location.replace(url);
+    console.log("from if");
+}else{
+    console.log("from else");
+}
+
+
 })
 .catch(error=>{
   console.log(error);
